@@ -55,7 +55,7 @@ void print_statistics(unsigned char array[], unsigned int length)
 {
   	
 	PRINTF("\n The Median is %u\n", find_median(array, length));
-	PRINTF("\n The Mean is %u\n", find_mean(array, length);
+	PRINTF("\n The Mean is %u\n", find_mean(array, length));
 	PRINTF("\n The Maximum is %u\n", find_maximum(array, length));
 	PRINTF("\n The Minimum is %u\n", find_minimum(array, length));
 
@@ -131,8 +131,3 @@ void sort_array(unsigned char array[], unsigned int length)
 		}
 	}
 }
-
-
-
-
-

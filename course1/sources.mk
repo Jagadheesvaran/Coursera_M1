@@ -11,25 +11,31 @@
 
 # Add your Source files to this variable
 ifeq ($(PLATFORM),MSP432)
-	SRCS = interrupts_msp432p401r_gcc.c \
-       	       memory.c \
-               system_msp432p401r.c \
-               startup_msp432p401r_gcc.c \
-               main.c
+	SRCS = src/interrupts_msp432p401r_gcc.c \
+       	       src/memory.c \
+               src/system_msp432p401r.c \
+               src/startup_msp432p401r_gcc.c \
+               src/main.c \
+	       src/data.c \
+	       src/stats.c \
+	       src/course1.c
 else ifeq ($(PLATFORM),HOST)
-	SRCS = main.c \
-	       memory.c
+	SRCS = src/main.c \
+	       src/memory.c \
+	       src/data.c \
+	       src/stats.c \
+	       src/course1.c
 else
 	$(error Enter a valid target)
 endif
 
 # Add your include paths to this variable
 ifeq ($(PLATFORM),MSP432)
-	INCLUDES = -I../include/CMSIS \
-	  	   -I../include/common \
-	   	   -I../include/msp432
+	INCLUDES = -Iinclude/CMSIS \
+	  	   -Iinclude/common \
+	   	   -Iinclude/msp432
 else ifeq ($(PLATFORM),HOST)
-	INCLUDES = -I../include/common
+	INCLUDES = -Iinclude/common
 else
 	$(error Enter a valid target)
 endif

@@ -8,10 +8,10 @@
  *
  *****************************************************************************/
 /**
- * @file memory.h
- * @brief Abstraction of memory read and write operations
+ * @file memory.c
+ * @brief Implementation of memory read and write operations
  *
- * This header file provides an abstraction of reading and
+ * This file provides an implementation of reading and
  * writing to memory via function calls. 
  * 
  * ###Modified### 
@@ -57,7 +57,7 @@ void clear_all(char * ptr, unsigned int size)
 
 uint8_t* my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 {
-	size_t iterator;
+	size_t iterator = 0;
 	uint8_t* buffer = (uint8_t*)malloc(length*sizeof(uint8_t));
 	if(!buffer)
 	{
@@ -77,7 +77,7 @@ uint8_t* my_memmove(uint8_t * src, uint8_t * dst, size_t length)
 
 uint8_t* my_memcopy(uint8_t * src, uint8_t * dst, size_t length)
 {
-        size_t iterator;
+        size_t iterator = 0;
         for(iterator = 0; iterator < length; iterator++)
         {
                 *(dst + iterator) = *(src + iterator);
@@ -87,7 +87,7 @@ uint8_t* my_memcopy(uint8_t * src, uint8_t * dst, size_t length)
 
 uint8_t* my_memset(uint8_t * src, size_t length, uint8_t value)
 {	
-	size_t iterator;
+	size_t iterator = 0;
 	for(iterator = 0; iterator < length; iterator++)
 	{
 		*(src + iterator) = value;
@@ -97,7 +97,7 @@ uint8_t* my_memset(uint8_t * src, size_t length, uint8_t value)
 
 uint8_t * my_memzero(uint8_t * src, size_t length)
 {
-	size_t iterator;
+	size_t iterator = 0;
         for(iterator = 0; iterator < length; iterator++)
         {
                 *(src + iterator) = 0;
@@ -107,7 +107,7 @@ uint8_t * my_memzero(uint8_t * src, size_t length)
 
 uint8_t * my_reverse(uint8_t * src, size_t length)
 {
-	size_t iterator, decremented_iterator;
+	size_t iterator = 0, decremented_iterator = 0;
         uint8_t* buffer = (uint8_t*)malloc(length*sizeof(uint8_t));
         if(!buffer)
         {

@@ -34,8 +34,9 @@ $(info Default PLATFORM=MSP432 if not specified)
 endif
 
 include sources.mk
+
 # Architectures Specific Flags
-LINKER_FILE = ../msp432p401r.lds
+LINKER_FILE = msp432p401r.lds
 CPU = cortex-m4
 ARCH = armv7e-m
 SPECS = nosys.specs
@@ -46,19 +47,19 @@ FPU = fpv4-sp-d16
 ifeq ($(PLATFORM),MSP432)
 	CC = arm-none-eabi-gcc
 	LD = arm-none-eabi-ld
-	TARGET = c1m2
+	TARGET = course1
 	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
 	CFLAGS = -mcpu=$(CPU) -march=$(ARCH) -mthumb -mfloat-abi=$(FLOAT_ABI) \
 	 -mfpu=$(FPU) --specs=$(SPECS) -Wall -Werror -g -O0 -std=c99 \
-	 -D$(PLATFORM)
+	 -D$(PLATFORM) -DCOURSE1 -DVERBOSE
 	OBJDUMP = arm-none-eabi-objdump
 	SIZE = arm-none-eabi-size
 else ifeq ($(PLATFORM),HOST)
 	CC = gcc
 	LD = ld
-	TARGET = c1m2
+	TARGET = course1
 	LDFLAGS = -Wl,-Map=$(TARGET).map
-	CFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM)
+	CFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM) -DCOURSE1 -DVERBOSE
 	OBJDUMP = objdump
 	SIZE = size
 else
@@ -90,17 +91,15 @@ $(TARGET).asm : $(TARGET).out
 
 .PHONY : compile-all
 compile-all : $(OBJS)
-	$(info IF ERROR ARISES, TRY OUT "make clean" COMMAND BEFORE THIS COMMAND)
 
 .PHONY : build
 build : $(DEPS) $(TARGET).out
 
 $(TARGET).out : $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o $@
-	$(info IF ERROR ARISES, TRY OUT "make clean" COMMAND BEFORE THIS COMMAND)
 	$(SIZE) $(TARGET).out $(OBJS)
 
 
-.PHONY:clean
+.PHONY : clean
 clean:
-	rm -f *.o *.d *.asm *.i c1m2.map c1m2.out
+	rm -f src/*.o src/*.d src/*.asm src/*.i course1.asm course1.map course1.out

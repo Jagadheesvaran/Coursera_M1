@@ -107,7 +107,7 @@ void clear_all(char * ptr, unsigned int size);
  *
  * @return dst Pointer to the destination
  */
-uint8_t my_memmove(uint8_t *src, uint8_t *dst, size_t length);
+uint8_t* my_memmove(uint8_t *src, uint8_t *dst, size_t length);
 
 /**
  * @brief Copies a memory content from source to destination
@@ -123,7 +123,7 @@ uint8_t my_memmove(uint8_t *src, uint8_t *dst, size_t length);
  *
  * @return dst Pointer to the destination
  */
-uint8_t my_memcopy(uint8_t *src, uint8_t *dst, size_t length);
+uint8_t* my_memcopy(uint8_t *src, uint8_t *dst, size_t length);
 
 /**
  * @brief Sets a memory stretch, provided by a src pointer, to value passed
@@ -137,7 +137,7 @@ uint8_t my_memcopy(uint8_t *src, uint8_t *dst, size_t length);
  *
  * @return src Pointer to the source
  */
-uint8_t my_memset(uint8_t *src, size_t length, uint8_t value);
+uint8_t* my_memset(uint8_t *src, size_t length, uint8_t value);
 
 /**
  * @brief Clears(Zeros) a memory stretch, provided by a src pointer
@@ -150,7 +150,7 @@ uint8_t my_memset(uint8_t *src, size_t length, uint8_t value);
  *
  * @return src Pointer to the source
  */
-uint8_t my_memzero(uint8_t *src, size_t length);
+uint8_t* my_memzero(uint8_t *src, size_t length);
 
 /**
  * @brief Reverses a memory stretch, provided by a src pointer
@@ -163,7 +163,7 @@ uint8_t my_memzero(uint8_t *src, size_t length);
  *
  * @return src Pointer to the source
  */
-uint8_t my_reverse(uint8_t *src, size_t length);
+uint8_t* my_reverse(uint8_t *src, size_t length);
 
 /**
  * @brief Reserve memory stretch for given number of words
